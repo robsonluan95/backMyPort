@@ -2,10 +2,10 @@ interface UserProps{
     email:string;
     password:string;
 }
-class CreateUserSevice{
+class CreateUserService{
     async execute({email,password}:UserProps){
         console.log({ok:true})
     }
 }
 
-export {CreateUserSevice}
+export {CreateUserService}

@@ -1,5 +1,6 @@
 import {Router, type Request,type Response} from "express";
-import { CreateUserController } from "./controller/user/createUserController";
+import { CreateUserController } from "./controller/user/CreateUserController";
+import { AuthUserController } from "./controller/user/AuthUserController";
 
 const router = Router();
 
@@ -12,5 +13,9 @@ router.get('/teste',(req:Request,res:Response)=>{
 //Rota User // 
 
 router.post('/user',new CreateUserController().handle)
+router.post('/session',new AuthUserController().handle)
+
+
+
 
 export  {router};

@@ -1,5 +1,6 @@
 import prismaClient from "../../prisma";
 import {hash} from "bcryptjs"
+
 interface UserProps {
     email: string;
     password: string;
@@ -16,6 +17,7 @@ class CreateUserService {
                 email: email,
             },
         });
+
 
         if (userAlreadyExists) {
             throw new Error("User/Email already exists");

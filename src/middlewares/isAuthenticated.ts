@@ -15,7 +15,7 @@ export function isAuthenticated(request:Request,response:Response,next:NextFunct
         return response.status(401).end()
     }
 
-    const [,token]= authToken.split("")
+    const [,token]= authToken.split(" ")
 
     try{
         const {sub}= verify(token,process.env.JWT_SECRET) as PlayLoad
@@ -23,8 +23,8 @@ export function isAuthenticated(request:Request,response:Response,next:NextFunct
 
         return next();
 
-
     }catch (err){
+        console.error('Erro na verificação do token:', err);
         return response.status(401).end()
     }
 

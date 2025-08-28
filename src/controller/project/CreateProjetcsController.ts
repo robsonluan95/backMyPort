@@ -5,7 +5,10 @@ import { Readable } from "stream";
 
 
 class UpdateUserController{
-    async execute(fileBuffer:Buffer,folder:string){
+    async handle(request:Request,response:Response){
+        const{
+
+        } = request.body
 
     }
 }

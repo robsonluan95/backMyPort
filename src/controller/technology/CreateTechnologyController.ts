@@ -18,11 +18,11 @@ export class CreateTechnologyController{
             }
 
             const bannerUrl  = await uploadToCloudinary.execute(file.buffer,"Technologies")
-            const produto = await createTechnologyService.execute({
+            const tecnologia = await createTechnologyService.execute({
                 name,banner:bannerUrl, 
             })
 
-            return response.json(produto)
+            return response.json(tecnologia)
 
         }catch(err){
             console.error("Error ao criar tecnologia",err)

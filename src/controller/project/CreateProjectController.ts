@@ -9,7 +9,7 @@ export class CreateProjectController {
             name, startYear, endYear, typeProject, mobile,
             location, github, site, figma, description, techIds
         } = request.body
-        
+
         const bannerWeb = request.files['bannerWeb']?.[0];
         const bannerMobile = request.files['bannerMobile']?.[0];
 
@@ -27,9 +27,9 @@ export class CreateProjectController {
             const bannerMobileUrl = await uploadToCloudnary.execute(bannerMobile.buffer, 'BannerMobile')
 
             const projeto = await createProjectService.execute({
-                name, startYear: startYearNumber, endYear : endYearNumber, typeProject, mobile : mobileBoolean,
-                location, github, site, figma, description, techIds:arrayTech,bannerWeb:bannerWebUrl,bannerMobile:bannerMobileUrl
-            } )
+                name, startYear: startYearNumber, endYear: endYearNumber, typeProject, mobile: mobileBoolean,
+                location, github, site, figma, description, techIds: arrayTech, bannerWeb: bannerWebUrl, bannerMobile: bannerMobileUrl
+            })
 
             return response.json(projeto)
         } catch (err) {

@@ -12,6 +12,8 @@ import { CreateTechnologyController } from "./controller/technology/CreateTechno
 
 // - import de Projetos
 import { CreateProjectController } from "./controller/project/CreateProjectController"
+import { ListProjectController } from "./controller/project/ListProjectController"
+
 
 import { upload } from "./config/multer";
 
@@ -20,7 +22,7 @@ import { upload } from "./config/multer";
 const router = Router();
 
 //Rota Teste//
-router.get('/teste', (req: Request, res: Response) => {return res.json({ ok: true })})
+router.get('/teste', (req: Request, res: Response) => { return res.json({ ok: true }) })
 
 //Rota User // 
 
@@ -36,5 +38,5 @@ router.post('/technology', upload.single("banner"), new CreateTechnologyControll
 
 router.post('/projects', upload.fields([{ name: "bannerWeb", maxCount: 1 },
 { name: "bannerMobile", maxCount: 1 }]), new CreateProjectController().handle)
-
+router.get('/projects', new ListProjectController().handle)
 export { router };

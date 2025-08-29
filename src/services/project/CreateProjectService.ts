@@ -41,11 +41,11 @@ export class CreateProjectService {
                 bannerMobile,
                 // aqui estamos adicionado as tecnoligas 
                 technologies: {
-                    connect: techIds.map((techId)=>({id:techId}))
+                    connect: techIds.map((techId) => ({ id: techId }))
                 },
             },
-            include:{
-                technologies:true
+            include: {
+                technologies: true
             }
         })
 

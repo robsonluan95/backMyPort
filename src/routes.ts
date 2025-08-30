@@ -9,11 +9,14 @@ import { DatailsUserController } from "./controller/user/DetailsUserController";
 
 //-  import de Technology - //
 import { CreateTechnologyController } from "./controller/technology/CreateTechnologyController"
+import { ListTechnologyController } from "./controller/technology/ListTechnologyController"
+import { DeleteTechnologyController } from "./controller/technology/DeleteTechnologyController"
 
 // - import de Projetos
 import { CreateProjectController } from "./controller/project/CreateProjectController"
 import { ListProjectController } from "./controller/project/ListProjectController"
 import { UpdateProjectController } from "./controller/project/UpdateProjectController"
+import { DeleteProjectController } from "./controller/project/DeleteProjectController"
 
 import { upload } from "./config/multer";
 
@@ -33,12 +36,13 @@ router.get('/me', isAuthenticated, new DatailsUserController().handle)
 //Rota Tecnologia
 
 router.post('/technology', upload.single("banner"), new CreateTechnologyController().handle)
-
+router.get('/technologies', new ListTechnologyController().handle)
+router.delete('/technology', new DeleteTechnologyController().handle)
 // Rota Projects
 
 router.post('/projects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new CreateProjectController().handle)
 router.get('/projects', new ListProjectController().handle)
-router.post('/updateprojects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new UpdateProjectController().handle  )
-
+router.post('/updateprojects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new UpdateProjectController().handle)
+router.delete('/projects', new DeleteProjectController().handle)
 
 export { router };

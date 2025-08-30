@@ -1,6 +1,6 @@
 import prismaClient from "../../prisma"
 
-interface PorjectProps {
+export interface ProjectProps {
     name: string;
     startYear: number;
     endYear: number;
@@ -23,7 +23,7 @@ export class CreateProjectService {
     async execute({
         name, startYear, endYear, typeProject, mobile,
         location, github, site, figma, description, techIds, bannerWeb, bannerMobile
-    }: PorjectProps) {
+    }: ProjectProps) {
 
         const projeto = await prismaClient.project.create({
             data: {

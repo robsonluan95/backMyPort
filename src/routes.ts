@@ -13,7 +13,7 @@ import { CreateTechnologyController } from "./controller/technology/CreateTechno
 // - import de Projetos
 import { CreateProjectController } from "./controller/project/CreateProjectController"
 import { ListProjectController } from "./controller/project/ListProjectController"
-
+import { UpdateProjectController } from "./controller/project/UpdateProjectController"
 
 import { upload } from "./config/multer";
 
@@ -34,9 +34,11 @@ router.get('/me', isAuthenticated, new DatailsUserController().handle)
 
 router.post('/technology', upload.single("banner"), new CreateTechnologyController().handle)
 
-// Rota Projectos
+// Rota Projects
 
-router.post('/projects', upload.fields([{ name: "bannerWeb", maxCount: 1 },
-{ name: "bannerMobile", maxCount: 1 }]), new CreateProjectController().handle)
+router.post('/projects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new CreateProjectController().handle)
 router.get('/projects', new ListProjectController().handle)
+router.post('/updateprojects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new UpdateProjectController().handle  )
+
+
 export { router };

@@ -11,4 +11,4 @@ export class DeleteTechnologyController {
         return response.json(technologyDelete)
 
     }
-}
+} 

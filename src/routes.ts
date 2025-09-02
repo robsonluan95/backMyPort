@@ -19,6 +19,7 @@ import { UpdateProjectController } from "./controller/project/UpdateProjectContr
 import { DeleteProjectController } from "./controller/project/DeleteProjectController"
 
 import { upload } from "./config/multer";
+import { UpdateTechnologyController } from "./controller/technology/UpdateTechnologyController";
 
 //- Import de Autenticação -//
 
@@ -38,11 +39,13 @@ router.get('/me', isAuthenticated, new DatailsUserController().handle)
 router.post('/technology', upload.single("banner"), new CreateTechnologyController().handle)
 router.get('/technologies', new ListTechnologyController().handle)
 router.delete('/technology', new DeleteTechnologyController().handle)
+router.put('/technology', upload.single("banner") ,new UpdateTechnologyController().handle)
+
 // Rota Projects
 
 router.post('/projects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new CreateProjectController().handle)
 router.get('/projects', new ListProjectController().handle)
-router.post('/updateprojects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new UpdateProjectController().handle)
+router.put('/updateprojects', upload.fields([{ name: "bannerWeb", maxCount: 1 }, { name: "bannerMobile", maxCount: 1 }]), new UpdateProjectController().handle)
 router.delete('/projects', new DeleteProjectController().handle)
 
 export { router };
